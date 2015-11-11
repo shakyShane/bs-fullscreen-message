@@ -4,4 +4,4 @@ module.exports = {
     hooks: {
         "client:js": require('fs').readFileSync(__dirname + '/client.js', 'utf8')
     }
-}
+};

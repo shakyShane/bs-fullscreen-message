@@ -1,7 +1,8 @@
 var browserSync = require('browser-sync').create();
 
 browserSync.init({
-    server: true
+    server: 'test/fixtures',
+    plugins: [require('./')]
 });
 
 setTimeout(function () {
@@ -9,4 +10,4 @@ setTimeout(function () {
         title: "Hello from Example",
         body:  '10 seconds have elapsed!'
     });
-}, 10000);
+}, 5000);
