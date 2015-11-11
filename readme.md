@@ -28,3 +28,9 @@ setTimeout(function () {
     });
 }, 5000);
 ```
+
+### Example from `webpack.babel` recipe
+
+Checkout the example here https://github.com/BrowserSync/recipes/blob/master/recipes/webpack.babel/app.js
+
+![fullscreen](http://s2.postimg.org/jsi8hzzbt/Screen_Shot_2015_11_11_at_09_22_46.png)
