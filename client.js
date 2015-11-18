@@ -16,7 +16,8 @@
         color: 'white',
         'textAlign': 'left',
         padding: '20px',
-    }
+        zIndex: '100000'
+    };
 
     var elem = document.createElement('div');
     var body = document.getElementsByTagName('body')[0];
