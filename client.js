@@ -16,7 +16,8 @@
         color: 'white',
         'textAlign': 'left',
         padding: '20px',
-        zIndex: '100000'
+        zIndex: '100000',
+	overflow: 'scroll'
     };
 
     var elem = document.createElement('div');
