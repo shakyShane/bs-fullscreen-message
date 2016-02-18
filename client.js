@@ -42,9 +42,9 @@
         }
 
         var html;
-        if (data.getHtml) {
+        if (data.script) {
             elem = document.createElement('script');
-            html = data.getHtml;
+            html = data.script;
         }else{
             html = '<h1 style="%s">%s</h1><div style="%s"><pre style="%s">%s</pre></div>'
             .replace('%s', data.titleStyles   || 'font-family:sans-serif')
