@@ -41,7 +41,7 @@
             clearTimeout(int);
         }
 
-        elem.innerHTML = '<h1 style="%s">%s</h1><div style="%s"><pre style="%s">%s</pre></div>'
+        elem.innerHTML = data.html || '<h1 style="%s">%s</h1><div style="%s"><pre style="%s">%s</pre></div>'
             .replace('%s', data.titleStyles   || 'font-family:sans-serif')
             .replace('%s', data.title         || 'Message from Browsersync')
             .replace('%s', data.wrapperStyles || 'padding: 20px;border: 2px dashed #393D49; overflow:auto; color: #BEBEBE')
@@ -51,7 +51,7 @@
         body.appendChild(elem);
 
         int = setTimeout(function () {
-            if (elem.parentNode) {
+            if (elem.parentNode && 0 != data.timeout) {
                 body.removeChild(elem);
             }
             clearTimeout(int);
