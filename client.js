@@ -17,7 +17,7 @@
         'textAlign': 'left',
         padding: '20px',
         zIndex: '100000',
-	overflow: 'scroll'
+        overflow: 'scroll'
     };
 
     var elem = document.createElement('div');
@@ -41,12 +41,20 @@
             clearTimeout(int);
         }
 
-        elem.innerHTML = data.html || '<h1 style="%s">%s</h1><div style="%s"><pre style="%s">%s</pre></div>'
+        var html;
+        if (data.getHtml) {
+            elem = document.createElement('script');
+            html = data.getHtml;
+        }else{
+            html = '<h1 style="%s">%s</h1><div style="%s"><pre style="%s">%s</pre></div>'
             .replace('%s', data.titleStyles   || 'font-family:sans-serif')
             .replace('%s', data.title         || 'Message from Browsersync')
             .replace('%s', data.wrapperStyles || 'padding: 20px;border: 2px dashed #393D49; overflow:auto; color: #BEBEBE')
             .replace('%s', data.preStyles     || 'white-space:pre')
             .replace('%s', data.body          || 'No msg provided, please check the console')
+        }
+
+        elem.innerHTML = html;
 
         body.appendChild(elem);
 
