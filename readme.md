@@ -33,4 +33,8 @@ setTimeout(function () {
 
 Checkout the example here https://github.com/BrowserSync/recipes/blob/master/recipes/webpack.babel/app.js
 
-![fullscreen](http://s2.postimg.org/jsi8hzzbt/Screen_Shot_2015_11_11_at_09_22_46.png)
+![fullscreen](https://s31.postimg.org/cfa3zg3fv/Screen_Shot_2016_06_16_at_09_15_30.png)
+
+### Example from using `gulp-sass` plugin
+
+![fullscreen](https://s31.postimg.org/rcil0ggob/Screen_Shot_2016_06_16_at_09_14_03.png)
