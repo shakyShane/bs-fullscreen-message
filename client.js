@@ -5,19 +5,14 @@
     var TIMEOUT = 5000;
 
     var styles = {
-        width: '100%',
-        height: '100%',
         position: 'fixed',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        background: '#1B2032',
-        color: 'white',
-        'textAlign': 'left',
-        padding: '20px',
-        zIndex: '100000',
-	overflow: 'scroll'
+        width: '100%',
+        background: 'white',
+        bottom: 0,
+        zIndex: 999999,
+        border: '2px solid black',
+        overflow: 'auto',
+        color: '#444',
     };
 
     var elem = document.createElement('div');
@@ -33,7 +28,9 @@
         if (int) {
             clearTimeout(int);
         }
-        body.removeChild(elem);
+        if (elem.parentNode) {
+            body.removeChild(elem);
+        }
     });
     socket.on(MSG_EVENT, function (data) {
 
@@ -42,9 +39,9 @@
         }
 
         elem.innerHTML = '<h1 style="%s">%s</h1><div style="%s"><pre style="%s">%s</pre></div>'
-            .replace('%s', data.titleStyles   || 'font-family:sans-serif')
+            .replace('%s', data.titleStyles   || 'padding: 1em;background: black;color: white;font-size: 1em;font-family: sans-serif;font-weight: normal;')
             .replace('%s', data.title         || 'Message from Browsersync')
-            .replace('%s', data.wrapperStyles || 'padding: 20px;border: 2px dashed #393D49; overflow:auto; color: #BEBEBE')
+            .replace('%s', data.wrapperStyles || '')
             .replace('%s', data.preStyles     || 'white-space:pre')
             .replace('%s', data.body          || 'No msg provided, please check the console')
 
