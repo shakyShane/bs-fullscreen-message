@@ -13,6 +13,7 @@
         border: '2px solid black',
         overflow: 'auto',
         color: '#444',
+        'max-height': '50%',
     };
 
     var elem = document.createElement('div');
