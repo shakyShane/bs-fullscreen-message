@@ -6,7 +6,8 @@
 
     var styles = {
         position: 'fixed',
-        width: '100%',
+        left: '0',
+        right: '0',
         background: 'white',
         bottom: 0,
         zIndex: 999999,
