@@ -1,7 +1,7 @@
 (function (socket) {
-
-  var MESSAGE_EVENT   = 'fullscreen:message';
-  var MESSAGE_CLEAR_EVENT = 'fullscreen:message:clear';
+  var SHOW_MESSAGE_EVENT = 'fullscreen:message'
+  var HIDE_MESSAGE_EVENT = 'fullscreen:message:clear'
+  var MESSAGE_ID = 'bs-fullscreen-message'
 
   var styles = {
     'opacity': 0.98,
@@ -14,26 +14,37 @@
     'height': '100%',
     'z-index': 5000,
     'color': 'white'
-  };
+  }
 
-  var elem = document.createElement('div');
-  var body = document.getElementsByTagName('body')[0];
-  var key;
+  function removeMessage (ctx) {
+    var el = document.getElementById(MESSAGE_ID)
+    if (el) ctx.removeChild(el)
+  }
 
-  for (key in styles) elem.style[key] = styles[key];
+  function createMessage (data) {
+    var el = document.createElement('div')
+    el.id = MESSAGE_ID
 
-  socket.on(MESSAGE_CLEAR_EVENT, function () {
-    if (elem.parentNode) body.removeChild(elem);
-  });
+    for (var key in styles) el.style[key] = styles[key]
 
-  socket.on(MESSAGE_EVENT, function (data) {
-    elem.innerHTML = '<h1 style="%s">%s</h1><div style="%s"><pre style="%s">%s</pre></div>'
-        .replace('%s', data.titleStyles   || '')
-        .replace('%s', data.title         || 'Message from Browsersync')
-        .replace('%s', data.wrapperStyles || '')
-        .replace('%s', data.preStyles     || 'white-space:pre')
-        .replace('%s', data.body          || 'No msg provided, please check the console')
+    el.innerHTML = '<h1 style="%s">%s</h1><div style="%s"><pre style="%s">%s</pre></div>'
+		.replace('%s', data.titleStyles || '')
+		.replace('%s', data.title || 'Message from Browsersync')
+		.replace('%s', data.wrapperStyles || '')
+		.replace('%s', data.preStyles || 'white-space:pre')
+		.replace('%s', data.body || 'Something happens; Check the console')
 
-    body.appendChild(elem);
-  });
-})(window.___browserSync___.socket);
+    return el
+  }
+
+  var body = document.getElementsByTagName('body')[0]
+
+  socket.on(HIDE_MESSAGE_EVENT, function () {
+    removeMessage(body)
+  })
+
+  socket.on(SHOW_MESSAGE_EVENT, function (data) {
+    removeMessage(body)
+    body.appendChild(createMessage(data))
+  })
+})(window.___browserSync___.socket)
