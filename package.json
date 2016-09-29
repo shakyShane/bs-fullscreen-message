@@ -17,6 +17,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "browser-sync": "^2.10.0"
+    "browser-sync": "^2.10.0",
+    "standard": "~8.2.0"
   }
 }
